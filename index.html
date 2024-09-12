@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Namaste-Tech Dashboard</title>
+    <link rel="stylesheet" href="../CSS/dashboard.css">
+  <style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background: #333;
+    color: white;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+header .logo {
+    font-size: 24px;
+}
+
+header nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+header nav ul li {
+    margin-right: 20px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+header .user-profile {
+    display: flex;
+    align-items: center;
+}
+
+header .user-profile span {
+    margin-right: 10px;
+}
+
+.container {
+    display: flex;
+}
+
+aside {
+    width: 20%;
+    background: #f4f4f4;
+    padding: 20px;
+}
+
+main {
+    width: 80%;
+    padding: 20px;
+}
+
+.card {
+    background: #fff;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+section h2 {
+    margin-top: 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+  </style>
+</head>
+<body>
+   
+
+    <div class="container">
+        <aside>
+            <ul>
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">Reports</a></li>
+                <li><a href="#">Notifications</a></li>
+            </ul>
+        </aside>
+
+        <main>
+            <section class="analytics-overview">
+                <h2>Analytics Overview</h2>
+                <div class="card">
+                    <h3>Total Users</h3>
+                    <p id="total-users">5000</p>
+                </div>
+                <div class="card">
+                    <h3>Active Users</h3>
+                    <canvas id="active-users-chart"></canvas>
+                </div>
+                <div class="card">
+                    <h3>Website Visits</h3>
+                    <canvas id="traffic-stats-chart"></canvas>
+                </div>
+            </section>
+
+            <section class="recent-posts">
+                <h2>Recent Blog Posts</h2>
+                <ul>
+                    <li>
+                        <h3>Post Title 1</h3>
+                        <p>Summary of the post...</p>
+                        <span>Date Published</span>
+                    </li>
+                    <li>
+                        <h3>Post Title 2</h3>
+                        <p>Summary of the post...</p>
+                        <span>Date Published</span>
+                    </li>
+                </ul>
+            </section>
+
+            <section class="user-management">
+                <h2>User Management</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Joined</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Nitin</td>
+                            <td>nitin@example.com</td>
+                            <td>2024-09-01</td>
+                        </tr>
+                        <!-- More rows as needed -->
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+
+   
+
+    <script>
+      // Example code for Chart.js
+
+document.addEventListener('DOMContentLoaded', () => {
+    const ctxActiveUsers = document.getElementById('active-users-chart').getContext('2d');
+    const activeUsersChart = new Chart(ctxActiveUsers, {
+        type: 'line',
+        data: {
+            labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+            datasets: [{
+                label: 'Active Users',
+                data: [50, 60, 70, 65, 80, 85],
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    const ctxTrafficStats = document.getElementById('traffic-stats-chart').getContext('2d');
+    const trafficStatsChart = new Chart(ctxTrafficStats, {
+        type: 'bar',
+        data: {
+            labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+            datasets: [{
+                label: 'Website Visits',
+                data: [300, 400, 350, 450, 500, 550],
+                backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                borderColor: 'rgba(153, 102, 255, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+});
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</body>
+</html>
